@@ -18,6 +18,8 @@ There HAS to be a better way!
 
 This module was built for my specific need. I made it extensible and reusable where I was able, but some of what it does won't apply to most use cases. You're welcome to build on it and make it work for you!
 
+I approached this project with the intent of making it a scraper. Unfortunately, that was not possible because the information I need (file information and URLs) is served up inside a player that is populated by AJAX after the page loads. Because of this, I've employed the strategy below.
+
 1. Looks at config.ini to gather specifications including:
     - Podcasts to search for (date, name)
     - Whether to download the podcast files to a local directory
