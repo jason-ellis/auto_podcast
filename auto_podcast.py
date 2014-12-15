@@ -28,21 +28,24 @@ def main():
     # Create Python object of desired podcasts
     for podcast in podcast_list:
         if 'artist' in podcast and podcast['artist'].lower() in constants.PODCAST_TITLES:
-            podcast_artist = podcast['artist']
-            podcast_title = podcast['title']
-            podcast_date_str = podcast_title.split('- ')
-            podcast_date_str = podcast_date_str[len(podcast_date_str)-1]
-            podcast_date = datetime.datetime.strptime(podcast_date_str, '%m/%d/%Y')
-            podcast_mp3 = podcast['mp3']
-            podcast_filename = "%s - %s.mp3" % (podcast_date_str.replace('/', '-'), podcast_artist)
+            podcast_artist =        podcast['artist']
+            podcast_title =         podcast['title']
+            podcast_date_str =      podcast_title.split('- ')
+            podcast_date_str =      podcast_date_str[len(podcast_date_str)-1]
+            podcast_date =          datetime.datetime.strptime(podcast_date_str, '%m/%d/%Y')
+            podcast_mp3 =           podcast['mp3']
+            podcast_filename =      "%s - %s.mp3" % (podcast_date_str.replace('/', '-'),
+                                                     podcast_artist)
+            podcast_feed_filename = podcast_artist.replace(' ', '_')
 
             podcasts[podcast_title] = {
-                'title': podcast_title,
-                'artist': podcast_artist,
-                'date': podcast_date,
-                'date_string': podcast_date_str,
-                'mp3': podcast_mp3,
-                'filename': podcast_filename
+                'title':            podcast_title,
+                'artist':           podcast_artist,
+                'date':             podcast_date,
+                'date_string':      podcast_date_str,
+                'mp3':              podcast_mp3,
+                'filename':         podcast_filename,
+                'feed_filename':    podcast_feed_filename
             }
 
     if constants.RSS is True:
