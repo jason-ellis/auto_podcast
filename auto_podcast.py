@@ -22,11 +22,15 @@ def main():
     json_data = json_data[0]
     podcast_list = json.loads(json_data)
 
+    # RSS object for adding items to RSS feeds
     rss = Rss()
+
+    # Create dictionary of tracked podcasts
     podcasts = {}
 
-    # Create Python object of desired podcasts
     for podcast in podcast_list:
+        # Check each item in the returned JSON data to see if it is
+        # one of our tracked podcasts and assign variables
         if 'artist' in podcast and podcast['artist'].lower() in constants.PODCAST_TITLES:
             podcast_artist =        podcast['artist']
             podcast_title =         podcast['title']
@@ -36,8 +40,11 @@ def main():
             podcast_mp3 =           podcast['mp3']
             podcast_filename =      "%s - %s.mp3" % (podcast_date_str.replace('/', '-'),
                                                      podcast_artist)
-            podcast_feed_filename = podcast_artist.replace(' ', '_')
+            podcast_feed_filename = podcast_artist.replace(' ', '_').lower() + '.xml'
+            if constants.VERBOSE:
+                print(podcast_feed_filename)
 
+            # Add the podcast to the podcasts dict
             podcasts[podcast_title] = {
                 'title':            podcast_title,
                 'artist':           podcast_artist,
