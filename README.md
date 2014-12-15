@@ -46,5 +46,6 @@ If you have questions about making this work for you, feel free to send me an em
 **UPDATES**
 
 - 2014-11-21 - Initial release
-- 2014-12-15 - Refactored to use a different RSS feed for each radio show. This allows me to subscribe for automatic download of only the shows I want. I've removed some complexity in the module that no longer makes sense because of the switch to multiple feeds. This comes at the expense of extensibility, but fits my intended purpose much better.
-           - Dropbox share folder IDs are generated per file, not Dropbox account folder. As such, the RSS feed URL and filename information in config.ini is no longer usable. Files are now generated based on the 'author' metadata from the original source. Instructions for obtaining a usable RSS feed URL have been added to the documentation.
+- 2014-12-15 
+    - Refactored to use a different RSS feed for each radio show. This allows me to subscribe for automatic download of only the shows I want. I've removed some complexity in the module that no longer makes sense because of the switch to multiple feeds. This comes at the expense of extensibility, but fits my intended purpose much better.
+    - Dropbox share folder IDs are generated per file, not Dropbox account folder. As such, the RSS feed URL and filename information in config.ini is no longer usable. Files are now generated based on the 'author' metadata from the original source. Instructions for obtaining a usable RSS feed URL have been added to the documentation.
