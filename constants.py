@@ -30,26 +30,19 @@ for string in config['SOURCE']:
 if VERBOSE:
     print("URL = {0:s}".format(URL))
 
-# Podcasts to download
+# Podcasts to process
 PODCAST_TITLES = config.get('PODCASTS', 'PODCAST_TITLES')
-print(PODCAST_TITLES)
-PODCAST_TITLES = PODCAST_TITLES.split('\n')
+if VERBOSE:
+    print(PODCAST_TITLES)
+PODCAST_TITLES = PODCAST_TITLES.splitlines()
+# remove empty items from list
 PODCAST_TITLES = [x for x in PODCAST_TITLES if x]
-for string in PODCAST_TITLES:
-    string = string.strip(' \n')
-print(PODCAST_TITLES)
+if VERBOSE:
+    print(PODCAST_TITLES)
 
 # RSS configuration
 RSS_DIR = config.get('LOCAL', 'RSS_DIR')
-RSS_FILENAME = config.get('LOCAL', 'RSS_FILENAME')
-if config.get('RSS', 'DROPBOX_LINK') is not None:
-    dropbox_url = config.get('RSS', 'DROPBOX_LINK')
-    dropbox_url = dropbox_url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
-    head, sep, tail = dropbox_url.partition(RSS_FILENAME)
-    RSS_URL = head + RSS_FILENAME
-else:
-    RSS_BASE_URL = config.get('RSS', 'BASE_URL')
-    RSS_FOLDER_ID = config.get('RSS', 'FOLDER_ID')
-    RSS_URL = '{0:s}{1:s}{2:s}'.format(RSS_BASE_URL, RSS_FOLDER_ID, RSS_FILENAME)
-RSS_TITLE = config.get('RSS', 'RSS_TITLE')
+RSS_BASE_URL = config.get('RSS', 'BASE_URL')
+RSS_FOLDER_ID = config.get('RSS', 'FOLDER_ID')
+RSS_URL = '{0:s}{1:s}'.format(RSS_BASE_URL, RSS_FOLDER_ID)
 RSS_DESCRIPTION = config.get('RSS', 'RSS_DESCRIPTION')
